@@ -1,5 +1,5 @@
 const UserModel = require("../Models/user_model");
-// const bcrypt = require("bcryptjs") ;
+const bcrypt = require("bcryptjs") ;
 
 exports.GetUsers = async (req, res) => {
   try {
@@ -15,7 +15,7 @@ exports.PostUsers = async (req, res) => {
   try {
     //Traemos el body de la peticion de postman
     const {email, password } = req.body;
-//HOLA
+
     //Validacion de email
     const validation = await UserModel.findOne({email});
     if (validation) {
