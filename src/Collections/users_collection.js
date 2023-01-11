@@ -41,7 +41,7 @@ exports.PutUsers = async (req, res) => {
   //   { new: true }
   // );
   // res.send(response);
-  res.send("HOLA PUT");
+  res.send("Hola mundo");
 };
 exports.DeleteUsers = async (req, res) => {
   // const { idUser } = req.params;
