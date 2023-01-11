@@ -1,5 +1,5 @@
 const UserModel = require("../Models/user_model");
-// const bcrypt = require("bcryptjs") ;
+const bcrypt = require("bcryptjs") ;
 
 exports.GetUsers = async (req, res) => {
   try {
@@ -29,7 +29,7 @@ exports.PostUsers = async (req, res) => {
     res.status(201).send(response);
   } catch (error) {
     console.log(error);
-    res.status(400).send("hubo un error en la peticion post");
+    res.status(400).send("hubo un error en la peticion POST");
   }  
 };
 
@@ -41,7 +41,7 @@ exports.PutUsers = async (req, res) => {
   //   { new: true }
   // );
   // res.send(response);
-  res.send("HOLA PUT");
+  res.send("Hola mundo");
 };
 exports.DeleteUsers = async (req, res) => {
   // const { idUser } = req.params;
