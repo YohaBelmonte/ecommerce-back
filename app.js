@@ -4,6 +4,7 @@ const cors = require('cors');
 //Nos conectamos a nuestra base de datos ↓
 const mongoose = require('mongoose');
 
+
 //configurar variables de entorno ↓
 const dotenv = require("dotenv");
 dotenv.config();
@@ -12,6 +13,7 @@ const app = express();
 
 
 //CONNECTION mongoDb
+mongoose.set('strictQuery', false)
 mongoose.connect(`mongodb+srv://${process.env.USER_MD}:${process.env.PASSWORD_MD}@yohabelmonte.0rpa4cw.mongodb.net/proyectoFinal?retryWrites=true&w=majority`);
 
 
