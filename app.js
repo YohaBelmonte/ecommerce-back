@@ -30,8 +30,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //ROUTES
+//const authRoutes = require('./src/routes/auth');
 const userRoutes = require("./src/routes/users");
 app.use("/api/user", userRoutes);
+//app.use("/api/auth", userRoutes);
 
 //SERVER
 const port = app.get('port');

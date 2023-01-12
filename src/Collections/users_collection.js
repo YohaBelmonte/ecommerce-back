@@ -1,5 +1,5 @@
 const UserModel = require("../Models/user_model");
-const bcrypt = require("bcryptjs") ;
+const bcrypt = require("bcryptjs");
 
 exports.GetUsers = async (req, res) => {
   try {
@@ -14,23 +14,23 @@ exports.GetUsers = async (req, res) => {
 exports.PostUsers = async (req, res) => {
   try {
     //Traemos el body de la peticion de postman
-    const {email, password } = req.body;
+    const { email, password, name, lastname, } = req.body;
 
     //Validacion de email
-    const validation = await UserModel.findOne({email});
+    const validation = await UserModel.findOne({ email });
     if (validation) {
-        return res.status(400).send("ya existe este email")
+      return res.status(400).send("ya existe este email")
     }
     const model = new UserModel({
       ...req.body,
-      password: password,
+      password: password, name, lastname,
     });
     const response = await model.save();
     res.status(201).send(response);
   } catch (error) {
     console.log(error);
     res.status(400).send("hubo un error en la peticion POST");
-  }  
+  }
 };
 
 exports.PutUsers = async (req, res) => {
@@ -44,9 +44,9 @@ exports.PutUsers = async (req, res) => {
   res.send("Hola mundo");
 };
 exports.DeleteUsers = async (req, res) => {
-  // const { idUser } = req.params;
-  // const user = await UserModel.findById(idUser);
-  // const response = await user.remove();
-  // res.send(response);
+  const { idUser } = req.params;
+  const user = await UserModel.findById(idUser);
+  const response = await user.remove();
+  res.send(response);
   res.send("HOLA DELETE");
 };
