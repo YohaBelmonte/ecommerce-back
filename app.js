@@ -14,12 +14,13 @@ const app = express();
 
 //CONNECTION mongoDb
 mongoose.set('strictQuery', false)
-mongoose.connect(`mongodb+srv://${process.env.USER_MD}:${process.env.PASSWORD_MD}@yohabelmonte.0rpa4cw.mongodb.net/proyectoFinal?retryWrites=true&w=majority`);
+// mongoose.connect(`mongodb+srv://${process.env.USER_MD}:${process.env.PASSWORD_MD}@yohabelmonte.0rpa4cw.mongodb.net/proyectoFinal?retryWrites=true&w=majority`);
+mongoose.connect(`mongodb+srv://${process.env.USER_MD}:${process.env.PASSWORD_MD}@ecommerce-shoe.tnpw5cz.mongodb.net/proyectoFinal?retryWrites=true&w=majority`);
 
 
 
 //SETTINGS
-app.set('port', process.env.PORT | 4000);
+app.set('port', process.env.PORT | 3100);
 
 
 app.use(cors())
