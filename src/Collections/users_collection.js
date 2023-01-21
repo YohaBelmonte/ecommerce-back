@@ -14,24 +14,32 @@ exports.GetUsers = async (req, res) => {
 exports.PostUsers = async (req, res) => {
   try {
     //Traemos el body de la peticion de postman
-    const { email, password, name, lastname, } = req.body;
+    const { email, password } = req.body;
 
     //Validacion de email
-    const validation = await UserModel.findOne({ email });
+    const validation = await UserModel.findOne({ email })
     if (validation) {
-      return res.status(400).send("ya existe este email")
+        return res.status(400).send("ya existe este usuario")
     }
+
+    //Encryptar password
+    const encrypt = await bcrypt.genSalt(10)
+    const passEncrypt = await bcrypt.hash(password, encrypt)
+
+    //Crear un Modelo nuevo con los datos indicados
     const model = new UserModel({
-      ...req.body,
-      password: password, name, lastname,
-    });
-    const response = await model.save();
+        ...req.body,
+        password: passEncrypt,
+    })
+
+    //Guardar en la base de datos el nuevo modelo
+    const response = await model.save()
     res.status(201).send(response);
-  } catch (error) {
-    console.log(error);
-    res.status(400).send("hubo un error en la peticion POST");
-  }
-};
+} catch (error) {
+    console.log(error)
+    res.status(400).send("hubo un error en la peticion post")
+}
+}
 
 exports.PutUsers = async (req, res) => {
   // const { idUser } = req.params;

@@ -20,7 +20,7 @@ mongoose.connect(`mongodb+srv://${process.env.USER_MD}:${process.env.PASSWORD_MD
 
 
 //SETTINGS
-app.set('port', process.env.PORT | 3100);
+app.set('port', process.env.PORT | 4000);
 
 
 app.use(cors())
@@ -31,10 +31,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //ROUTES
-//const authRoutes = require('./src/routes/auth');
 const userRoutes = require("./src/routes/users");
+const authRoutes = require('./src/routes/auth')
+
 app.use("/api/user", userRoutes);
-//app.use("/api/auth", userRoutes);
+app.use('/api/auth', authRoutes)
+
 
 //SERVER
 const port = app.get('port');
