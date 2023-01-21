@@ -22,6 +22,7 @@ exports.AuthPost = async (req, res) => {
         }
         const response = await bcrypt.compare(password, usuario.password)
         //Password incorrecto
+        
         if (!response) {
             return res.status(400).send("password incorrecto")
         }
@@ -30,7 +31,7 @@ exports.AuthPost = async (req, res) => {
                 id: usuario.id,
             }
         }
-        jwt.sign(userToken, process.env.SECRETA, { expiresIn: 10000 },
+        jwt.sign(userToken, process.env.SECRETA, { expiresIn: 90000 },
             (error, token) => {
                 if (error) {
                     console.log(error)
