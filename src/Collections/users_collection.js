@@ -42,15 +42,17 @@ exports.PostUsers = async (req, res) => {
 }
 
 exports.PutUsers = async (req, res) => {
-  // const { idUser } = req.params;
-  // const response = await UserModel.findByIdAndUpdate(
-  //   { _id: idUser },
-  //   req.body,
-  //   { new: true }
-  // );
-  // res.send(response);
-  res.send("Hola mundo");
-};
+  try {
+      //Buscamos su ID por parametros
+      const { idUser } = req.params;
+      //Busca el usuario por ID (idUser) => tomar el req.body y cambia el usuario encontrado
+      const response = await UserModel.findByIdAndUpdate({ _id:idUser }, req.body, { new: true })
+      res.status(201).send(response);
+  } catch (error) {
+      console.log(error)
+      res.status(400).send("hubo un error en la peticion put")
+  }
+}
 exports.DeleteUsers = async (req, res) => {
   const { idUser } = req.params;
   const user = await UserModel.findById(idUser);
