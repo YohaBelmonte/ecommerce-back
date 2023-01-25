@@ -20,10 +20,17 @@ const UserModel = mongoose.Schema(
       required: true,
       default: false,
     },
+    
+    createAdd:{
+      type: Date,
+      default: Date.now()
+  }
+
   },
   {
     timestamps: true,
   }
+  
 );
 
 module.exports = mongoose.model("UserModel", UserModel);
