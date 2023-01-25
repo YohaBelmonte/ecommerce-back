@@ -14,7 +14,8 @@ const app = express();
 
 //CONNECTION mongoDb
 mongoose.set('strictQuery', false)
-mongoose.connect(`mongodb+srv://${process.env.USER_MD}:${process.env.PASSWORD_MD}@yohabelmonte.0rpa4cw.mongodb.net/proyectoFinal?retryWrites=true&w=majority`);
+// mongoose.connect(`mongodb+srv://${process.env.USER_MD}:${process.env.PASSWORD_MD}@yohabelmonte.0rpa4cw.mongodb.net/proyectoFinal?retryWrites=true&w=majority`);
+mongoose.connect(`mongodb+srv://${process.env.USER_MD}:${process.env.PASSWORD_MD}@ecommerce-shoe.tnpw5cz.mongodb.net/proyectoFinal?retryWrites=true&w=majority`);
 
 
 
@@ -31,7 +32,9 @@ app.use(express.json());
 
 //ROUTES
 const userRoutes = require("./src/routes/users");
+const productRoutes = require("./src/routes/product");
 app.use("/api/user", userRoutes);
+app.use("/api/product", productRoutes);
 
 //SERVER
 const port = app.get('port');
