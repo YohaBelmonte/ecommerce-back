@@ -42,15 +42,16 @@ exports.PostUsers = async (req, res) => {
 }
 
 exports.PutUsers = async (req, res) => {
-  // const { idUser } = req.params;
-  // const response = await UserModel.findByIdAndUpdate(
-  //   { _id: idUser },
-  //   req.body,
-  //   { new: true }
-  // );
-  // res.send(response);
+   const { idUser } = req.params;
+   const response = await UserModel.findByIdAndUpdate(
+     { _id: idUser },
+     req.body,
+     { new: true }
+   );
+   res.send(response);
   res.send("Hola mundo");
 };
+
 exports.DeleteUsers = async (req, res) => {
   const { idUser } = req.params;
   const user = await UserModel.findById(idUser);

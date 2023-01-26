@@ -33,9 +33,11 @@ app.use(express.json());
 //ROUTES
 const userRoutes = require("./src/routes/users");
 const authRoutes = require('./src/routes/auth')
+const emailRoutes = require('./src/routes/email')
 
 app.use("/api/user", userRoutes);
-app.use('/api/auth', authRoutes)
+app.use('/api/auth', authRoutes);
+app.use('/api/email', emailRoutes);
 
 
 //SERVER
