@@ -27,6 +27,10 @@ const reviewSchema = mongoose.Schema(
 
 const ProductModel = mongoose.Schema(
   {
+    author:{
+      type: mongoose.Types.ObjectId,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
