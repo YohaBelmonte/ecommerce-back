@@ -1,11 +1,12 @@
 const ProductModel = require("../Models/product_model");
+const UserModel = require("../Models/user_model");  
 
 //GET ALLS PRODUCT 
 exports.GetProduct = async (req, res) => {
   try {
-    // const response = await ProductModel.find();
-    // res.status(200).send(response);
-    res.send("ALL PRODUCTS");
+    const response = await ProductModel.find();
+    res.status(200).send(response);
+    // res.send("ALL PRODUCTS");
   } catch (error) {
     console.log(error);
     res.status(400).send("hubo un error en la peticion get");
@@ -27,10 +28,12 @@ exports.GetOneProduct = async (req, res) => {
 
 
 exports.PostProduct = async (req, res) => {
+  const {name, image, description, price, countInStock} = req.body;
   try {
-    const {name, image, description, price, countInStock} = req.body;
+    const userModel= await UserModel.findById(req.usuario.id)
 
     const model = new ProductModel({
+      author: req.usuario.id,
       name:name,
       image:image,
       description:description,
@@ -43,7 +46,7 @@ exports.PostProduct = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(400).send("hubo un error en la peticion get");
+    res.status(400).send("hubo un error en la peticion post");
   }
 
   res.send("HOLA POST");
