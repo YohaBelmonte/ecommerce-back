@@ -28,8 +28,8 @@ const mongoose = require("mongoose");
 const ProductModel = mongoose.Schema(
   {
     author:{
-      type: mongoose.Types.ObjectId,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+        ref: 'userModel'
     },
     name: {
       type: String,
@@ -42,6 +42,10 @@ const ProductModel = mongoose.Schema(
     description: {
       type: String,
       required: true,
+    },
+    fav: {
+      type: String,
+      required: false,
     },
     // reviews: [reviewSchema],
     rating: {
