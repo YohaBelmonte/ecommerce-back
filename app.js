@@ -32,11 +32,12 @@ app.use(express.json());
 
 //ROUTES
 const userRoutes = require("./src/routes/users");
+const productRoutes = require("./src/Routes/product")
 const authRoutes = require('./src/routes/auth')
 
 app.use("/api/user", userRoutes);
 app.use('/api/auth', authRoutes)
-
+app.use('/api/product', productRoutes)
 
 //SERVER
 const port = app.get('port');
