@@ -53,7 +53,7 @@ exports.PostProduct = async (req, res) => {
   }
 };
 
-
+//PUT ADD PRODUCT para cada arrayProduct de cada User
 exports.PutAddProduct = async (req, res) => {
   const { idProduct } = req.params;
   try {
@@ -82,6 +82,7 @@ exports.PutAddProduct = async (req, res) => {
   }
 }
 
+//PUT REMOVE PRODUCT para cada arrayProduct de cada User
 exports.PutRemoveProduct = async (req, res) => {
   
   const { idProduct } = req.params;
