@@ -54,9 +54,16 @@ exports.PutUsers = async (req, res) => {
   }
 }
 exports.DeleteUsers = async (req, res) => {
-  const { idUser } = req.params;
-  const user = await UserModel.findById(idUser);
-  const response = await user.remove();
-  res.send(response);
-  res.send("HOLA DELETE");
-};
+  try {
+      //Buscamos su ID por parametros
+      const { idUser } = req.params;
+      //Buscamos en la base de datos al usuario que tiene el id del parametro (idUser)
+      const user = await UserModel.findById(idUser)
+      //Elimino el usuario que busque por ID (idUser)
+      const response = await user.remove();
+      res.status(200).send(response)
+  } catch (error) {
+      console.log(error)
+      res.status(400).send("hubo un error en la peticion delete")
+  }
+}
