@@ -35,6 +35,10 @@ const ProductModel = mongoose.Schema(
       type: String,
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
     image: {
       type: String,
       required: true,
@@ -47,6 +51,11 @@ const ProductModel = mongoose.Schema(
       type: String,
       required: false,
     },
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
     // reviews: [reviewSchema],
     rating: {
       type: Number,
@@ -58,11 +67,7 @@ const ProductModel = mongoose.Schema(
       required: true,
       default: 0,
     },
-    price: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
+   
     countInStock: {
       type: Number,
       required: true,
