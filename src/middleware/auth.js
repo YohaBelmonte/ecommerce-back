@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 function authModdleware(req, res, next) {
     const token = req.header("x-auth-token")
+    console.log(token)
     if (!token) {
        return res.status(400).send("no hay token")
     }
