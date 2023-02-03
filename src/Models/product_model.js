@@ -48,7 +48,7 @@ const ProductModel = mongoose.Schema(
       required: true,
     },
     fav: {
-      type: String,
+      type: Boolean,
       required: false,
     },
     price: {
