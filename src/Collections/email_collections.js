@@ -43,7 +43,7 @@ exports.EmailPost = async (req, res) => {
         const response = await transport.sendMail({
             //email del que envio el mensaje
             from: emailUser.email,
-            to: ['admin.admin@gmail.com'],
+            to: ['majorminus4697@gmail.com'],
             subject: title,
             text: description,
         })
