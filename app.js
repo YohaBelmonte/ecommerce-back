@@ -31,10 +31,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //ROUTES
-const userRoutes = require("./src/routes/users");
+const userRoutes = require("./src/Routes/users");
 const productRoutes = require("./src/Routes/product")
-const authRoutes = require('./src/routes/auth')
-const emailRoutes = require('./src/routes/email')
+const authRoutes = require('./src/Routes/auth')
+const emailRoutes = require('./src/Routes/email')
 
 app.use("/api/user", userRoutes);
 app.use('/api/auth', authRoutes);
