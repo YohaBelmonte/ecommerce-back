@@ -52,6 +52,11 @@ const ProductModel = mongoose.Schema(
       required: true,
       default: 0,
     },
+    size: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
     fav: {
       type: Boolean,
       required: false,
