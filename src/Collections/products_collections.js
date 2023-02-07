@@ -14,17 +14,32 @@ exports.GetProduct = async (req, res) => {
 };
 
 //GET SINGLE PRODUCT
-exports.GetOneProduct = async (req, res) => {
-  try {
-    const { idProduct } = req.params;
-    const response = await ProductModel.findById(idProduct);
-    console.log(idProduct)
-    res.status(200).send(response);
-  } catch (error) {
-    console.log(error);
-    res.status(400).send("hubo un error en la peticion get");
-  }
-};
+// exports.GetOneProduct = async (req, res) => {
+//   try {
+//     const { idProduct } = req.params;
+//     const response = await ProductModel.findById(idProduct);
+//     console.log(idProduct)
+//     res.status(200).send(response);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400).send("hubo un error en la peticion get");
+//   }
+// };
+
+  //GET CART PRODUCT
+  exports.GetCartProduct = async (req, res) => {
+    try {
+      const result = await UserModel.findById(req.usuario.id)
+      const cartProducts = result.arrayProduct.map((item) => {
+          return item;
+      })
+      console.log(cartProducts)
+      res.status(200).send(response);
+    } catch (error) {
+      console.log(error);
+      res.status(400).send("hubo un error en la peticion get");
+    }
+  };
 
 //POST PRODUCT BY ADMIN
 exports.PostProduct = async (req, res) => {

@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 exports.GetUsers = async (req, res) => {
   try {
-    //Para el get se usa de referecia el nombre del atributo del schema en este caso "product"
+    //Para el get se usa de referecia el nombre del atributo del schema en este caso "arrayProduct"
     const response = await UserModel.find().populate("arrayProduct").exec();
     res.status(200).send(response);
   } catch (error) {
