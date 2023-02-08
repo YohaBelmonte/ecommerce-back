@@ -31,10 +31,9 @@ exports.GetProduct = async (req, res) => {
     try {
       const result = await UserModel.findById(req.usuario.id)
       const cartProducts = result.arrayProduct.map((item) => {
-          return item;
+        return item;
       })
-      console.log(cartProducts)
-      res.status(200).send(response);
+      res.status(200).send(cartProducts);
     } catch (error) {
       console.log(error);
       res.status(400).send("hubo un error en la peticion get");
@@ -43,7 +42,6 @@ exports.GetProduct = async (req, res) => {
 
 //POST PRODUCT BY ADMIN
 exports.PostProduct = async (req, res) => {
-  const { name, image, description, price, countInStock } = req.body;
   try {
     //A traves del Middleware obtenemos el idUser para encontrar y poder ponerlo como author del producto POSTEADO 
     const userModel = await UserModel.findById(req.usuario.id);
@@ -103,23 +101,25 @@ exports.PutRemoveProduct = async (req, res) => {
   const { idProduct } = req.params;
   try {
       const result = await UserModel.findById(req.usuario.id)
+      console.log(result)
       const products = result.arrayProduct.map((item) => {
           return item;
       })
-      console.log(products)
+      
       products.map((item) => {
           if (item == idProduct) {
             // Paso en el que se elimina el product si es que ecuentra una coincidencia
               products.pop(0, item)
           }
       })
-
+      
       //4) Actualizamos el usuario con la lista completa (los productos antiguos mas el nuevo)
       const response = await UserModel.findByIdAndUpdate(
           { _id: req.usuario.id },
           { product: products },
           { new: true }
       )
+      
       res.status(201).send(response);
   } catch (error) {
       console.log(error)
