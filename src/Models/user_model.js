@@ -17,7 +17,6 @@ const UserModel = mongoose.Schema(
     },
     isAdmin: {
       type: Boolean,
-      required: true,
       default: false,
     },
     arrayProduct: [
