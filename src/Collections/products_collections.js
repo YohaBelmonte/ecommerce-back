@@ -111,8 +111,6 @@ exports.PutRemoveProduct = async (req, res) => {
             products.pop(0, item)
           }
         })
-        
-        console.log(products)
       //4) Actualizamos el usuario con la lista completa (los productos antiguos mas el nuevo)
       const response = await UserModel.findByIdAndUpdate(
           { _id: req.usuario.id },
