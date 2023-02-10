@@ -43,7 +43,7 @@ const ProductModel = mongoose.Schema(
       type: String,
       required: true,
     },
-    image22: {
+    image2: {
       type: String,
       required: true,
     },
