@@ -111,8 +111,6 @@ exports.PutRemoveProduct = async (req, res) => {
             products.pop(0, item)
           }
         })
-        
-        console.log(products)
       //4) Actualizamos el usuario con la lista completa (los productos antiguos mas el nuevo)
       const response = await UserModel.findByIdAndUpdate(
           { _id: req.usuario.id },
@@ -144,5 +142,17 @@ exports.PutProduct = async (req, res) => {
   }
 };
 exports.DeleteProduct = async (req, res) => {
-  res.send("HOLA DELETE");
+  try {
+    //Buscamos su ID por parametros
+    const { idProduct } = req.params;
+    //Buscamos en la base de datos al usuario que tiene el id del parametro (idUser)
+    const product = await ProductModel.findById(idProduct)
+    //Elimino el usuario que busque por ID (idUser)
+    const response = await product.remove();
+    res.status(200).send(response)
+  } catch (error) {
+    console.log(error)
+    res.status(400).send("hubo un error en la peticion delete")
+  }
+  // res.send("HOLA DELETE");
 };
