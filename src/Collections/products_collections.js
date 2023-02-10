@@ -154,5 +154,4 @@ exports.DeleteProduct = async (req, res) => {
     console.log(error)
     res.status(400).send("hubo un error en la peticion delete")
   }
-  // res.send("HOLA DELETE");
 };
