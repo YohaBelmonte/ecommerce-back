@@ -16,30 +16,33 @@ exports.PostProduct = async (req, res) => {
 };
 
 exports.PutQuantity = async (req, res) => {
-  
-  const { idProduct } = req.params;
+  // qty= "quantity"
+  const { idProduct, qty } = req.params;
   try {
-      const result = await UserModel.findById(req.usuario.id)
-      const products = result.arrayProduct.map((item) => {
-          return item;
-      })
-        products.map((item) => {
-          if (item == idProduct) {
-            products.pop(0, item)
-          }
-        })
-      const response = await UserModel.findByIdAndUpdate(
-          { _id: req.usuario.id },
-          { arrayProduct: products },
-          { new: true }
-      )
-      
-      res.status(201).send(response);
+    const result = await UserModel.findById(req.usuario.id);
+   
+    const products = result.arrayProduct.map((item) => {
+      return item;
+    });
+    let newCart = [];
+    products.map((item, qty) => {
+      if (item.toString() == idProduct) {
+        console.log(item)
+        // newCart.push(item);
+      }
+    });
+    // const response = await UserModel.findByIdAndUpdate(
+    //   { _id: req.usuario.id },
+    //   { arrayProduct: products },
+    //   { new: true }
+    // );
+    // console.log(newCart);
+    res.status(201).send(response);
   } catch (error) {
-      console.log(error)
-      res.status(400).send("hubo un error en la peticion post")
+    console.log(error);
+    res.status(400).send("error peticion Put Qty");
   }
-}
+};
 
 
 exports.DeleteProduct = async (req, res) => {

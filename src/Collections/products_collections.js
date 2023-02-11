@@ -106,12 +106,12 @@ exports.PutRemoveProduct = async (req, res) => {
     const products = result.arrayProduct.map((item) => {
       return item;
     });
-    let newCart= []
+    let newCart = [];
     products.filter((item) => {
       if (item.toString() !== idProduct) {
-        console.log(item.toString(), "hola");
-        console.log(idProduct);
-        newCart.push(item)
+        // console.log(item.toString(), "hola");
+        // console.log(idProduct);
+        newCart.push(item);
       }
     });
     //4) Actualizamos el usuario con la lista completa (los productos antiguos mas el nuevo)
@@ -158,39 +158,44 @@ exports.DeleteProduct = async (req, res) => {
   }
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // exports.PutRemoveProduct = async (req, res) => {
 //   const { idProduct } = req.params;
-//   try {
-//     const result = await UserModel.findById(req.usuario.id);
-//     // console.log(result)
-//     const cart = result.arrayProduct.map((item) => {
-//       console.log(item._id)
-//       console.log(idProduct)
-//       if (item._id !== idProduct) {
-//         // Paso en el que se elimina el product si es que ecuentra una coincidencia
-//         return item;
-//       }
-//     });
-
-      // products.map((item) => {
-          //   if (item.toString() == idProduct) {
-          //     console.log(item.toString(), "hola")
-          //     // Paso en el que se elimina el product si es que ecuentra una coincidencia
-          //     // products.pop(0, item.toString())
-          //   }
-          // })
-//     
-
-//     //4) Actualizamos el usuario con la lista completa (los productos antiguos mas el nuevo)
-//     const response = await UserModel.findByIdAndUpdate(
-//       { _id: req.usuario.id },
-//       { arrayProduct: cart },
-//       { new: true }
-//     ).populate("arrayProduct");
-
-//     res.status(201).send(response);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).send("hubo un error en la peticion post");
-//   }
+// try {
+//   const result = await UserModel.findById(req.usuario.id);
+//   console.log(result);
+//   const products = result.arrayProduct.map((item) => {
+//     return item;
+//   });
+//   products.map((item) => {
+//     if (item == idProduct) {
+//       // Paso en el que se elimina el product si es que ecuentra una coincidencia
+//       products.pop(0, item);
+//     }
+//   });
+//   //4) Actualizamos el usuario con la lista completa (los productos antiguos mas el nuevo)
+//   const response = await UserModel.findByIdAndUpdate(
+//     { _id: req.usuario.id },
+//     { arrayProduct: products },
+//     { new: true }
+//   );
+//   res.status(201).send(response);
+// } catch (error) {
+//   console.log(error);
+//   res.status(400).send("hubo un error en la peticion post");
+// }
 // };
