@@ -43,6 +43,18 @@ const ProductModel = mongoose.Schema(
       type: String,
       required: true,
     },
+    image2: {
+      type: String,
+      required: true,
+    },
+    image3: {
+      type: String,
+      required: true,
+    },
+    image4: {
+      type: String,
+      required: true,
+    },
     description: {
       type: String,
       required: true,
@@ -55,7 +67,11 @@ const ProductModel = mongoose.Schema(
     size: {
       type: Number,
       required: false,
-      default: 0,
+      default: 9,
+    },
+    color: {
+      type: String,
+      required: true,
     },
     fav: {
       type: Boolean,
