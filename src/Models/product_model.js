@@ -59,11 +59,6 @@ const ProductModel = mongoose.Schema(
       type: String,
       required: true,
     },
-    quantity: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
     size: {
       type: Number,
       required: false,
@@ -82,6 +77,16 @@ const ProductModel = mongoose.Schema(
       required: true,
       default: 0,
     },
+    countInStock: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+      default: 1,
+    },
     // reviews: [reviewSchema],
     rating: {
       type: Number,
@@ -94,11 +99,7 @@ const ProductModel = mongoose.Schema(
       default: 0,
     },
    
-    countInStock: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
+   
   },
   {
     timestamps: true,

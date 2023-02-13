@@ -9,6 +9,7 @@ router.get('/', UserCollection.GetUsers)
 router.get('/activeUser', Middleware, UserCollection.GetUser)
 router.post('/', UserCollection.PostUsers)
 router.put('/:idUser', UserCollection.PutUsers)
+router.put('/isAdmin/:idUser', UserCollection.PutAdmin)
 router.delete('/:idUser', UserCollection.DeleteUsers)
 
 
