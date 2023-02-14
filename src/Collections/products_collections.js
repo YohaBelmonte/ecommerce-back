@@ -13,7 +13,7 @@ exports.GetProduct = async (req, res) => {
   }
 };
 
-//GET SINGLE PRODUCT
+// GET SINGLE PRODUCT
 // exports.GetOneProduct = async (req, res) => {
 //   try {
 //     const { idProduct } = req.params;
@@ -52,14 +52,6 @@ exports.PostProduct = async (req, res) => {
       author: userModel,
       ...req.body,
     });
-    // const model = new ProductModel({
-    //   author: req.usuario.id,
-    //   name: name,
-    //   image: image,
-    //   description: description,
-    //   price: price,
-    //   countInStock: countInStock,
-    // });
     const response = await model.save();
     res.status(201).send(response);
   } catch (error) {
@@ -102,15 +94,12 @@ exports.PutRemoveProduct = async (req, res) => {
   const { idProduct } = req.params;
   try {
     const result = await UserModel.findById(req.usuario.id);
-    // console.log(result)
     const products = result.arrayProduct.map((item) => {
       return item;
     });
     let newCart = [];
     products.filter((item) => {
       if (item.toString() !== idProduct) {
-        // console.log(item.toString(), "hola");
-        // console.log(idProduct);
         newCart.push(item);
       }
     });
@@ -198,4 +187,27 @@ exports.DeleteProduct = async (req, res) => {
 //   console.log(error);
 //   res.status(400).send("hubo un error en la peticion post");
 // }
+// };
+
+
+
+//POST PRODUCT BY ADMIN
+// exports.PostProduct = async (req, res) => {
+//   try {
+//     //A traves del Middleware obtenemos el idUser para encontrar y poder ponerlo como author del producto POSTEADO
+//     const userModel = await UserModel.findById(req.usuario.id);
+//     const model = new ProductModel({
+//       author: req.usuario.id,
+//       name: name,
+//       image: image,
+//       description: description,
+//       price: price,
+//       countInStock: countInStock,
+//     });
+//     const response = await model.save();
+//     res.status(201).send(response);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400).send("hubo un error en la peticion post");
+//   }
 // };
