@@ -11,7 +11,6 @@ exports.EmailGet = async (req, res) => {
         res.status(400).send("email no encontrado");
     }
 }
-
 exports.EmailPost = async (req, res) => {
 
     var transport = nodemailer.createTransport({
