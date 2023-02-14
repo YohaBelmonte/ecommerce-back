@@ -15,13 +15,13 @@ exports.EmailGet = async (req, res) => {
 exports.EmailPost = async (req, res) => {
 
     var transport = nodemailer.createTransport({
-        host: "smtp.mailtrap.io",
+        host: "sandbox.smtp.mailtrap.io",
         port: 2525,
         auth: {
-            user: "72afad7e3339db",
-            pass: "5783f817842b8d"
+          user: "041cd95cb5231f",
+          pass: "a815eb368b16e0"
         }
-    });
+      });
 
     const { title, description } = req.body;
 
