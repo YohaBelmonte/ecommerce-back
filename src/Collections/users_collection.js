@@ -3,8 +3,20 @@ const bcrypt = require("bcryptjs");
 
 exports.GetUsers = async (req, res) => {
   try {
-    //Para el get se usa de referecia el nombre del atributo del schema en este caso "product"
+    //Para el get se usa de referecia el nombre del atributo del schema en este caso "arrayProduct"
     const response = await UserModel.find().populate("arrayProduct").exec();
+    res.status(200).send(response);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("hubo un error en la peticion get");
+  }
+};
+
+// get ONE USER to admin filter
+exports.GetUser = async (req, res) => {
+  try {
+    //Para el get se usa de referecia el nombre del atributo del schema en este caso "arrayProduct"
+    const response = await UserModel.findById(req.usuario.id);
     res.status(200).send(response);
   } catch (error) {
     console.log(error);
@@ -64,6 +76,32 @@ exports.PutUsers = async (req, res) => {
     res.status(400).send("hubo un error en la peticion put")
   }
 }
+
+// change ADMIN atribute "isAdmin"
+exports.PutAdmin = async (req, res) => {
+  const { idUser } = req.params;
+  try {
+    const user = await UserModel.findById(idUser);
+    const isAdmin = user.isAdmin;
+    console.log(user);
+    if (!isAdmin) {
+      isAdminState = true;
+    }else{
+      isAdminState = false;
+    }
+    const response = await UserModel.findByIdAndUpdate(
+      { _id: idUser },
+      { isAdmin: isAdminState },
+      { new: true }
+    );
+    res.status(201).send(response);  
+    
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("hubo un error en la peticion post");
+  }
+};
+
 exports.DeleteUsers = async (req, res) => {
   try {
     //Buscamos su ID por parametros

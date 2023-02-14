@@ -1,13 +1,13 @@
 const express = require("express")
 const router = express.Router();
 
-const OrderCollection = require("../collections/order_collection")
+const OrderCollection = require("../Collections/order_collection")
 
 
 //router + peticion ( direction(path) , + method)
-router.get('/', OrderCollection.GetProduct)
+// router.get('/', OrderCollection.GetProduct)
 router.post('/', OrderCollection.PostProduct)
-router.put('/:idProduct', OrderCollection.PutProduct)
+router.put('/:idProduct/:qty', OrderCollection.PutQuantity)
 router.delete('/:idProduct', OrderCollection.DeleteProduct)
 
 
