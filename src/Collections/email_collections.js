@@ -1,4 +1,4 @@
-const EmailModel = require('../models/email_model');
+const EmailModel = require('../Models/email_model');
 const UserModel = require('../Models/user_model');
 const nodemailer = require('nodemailer')
 
