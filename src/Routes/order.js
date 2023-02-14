@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router();
 
-const OrderCollection = require("../collections/order_collection")
+const OrderCollection = require("../Collections/order_collection")
 
 
 //router + peticion ( direction(path) , + method)

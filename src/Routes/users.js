@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router();
 
-const UserCollection = require("../collections/users_collection")
+const UserCollection = require("../Collections/users_collection")
 const Middleware = require("../middleware/auth")
 
 //router + peticion ( direction(path) , + method)
