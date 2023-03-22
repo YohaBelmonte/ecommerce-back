@@ -14,17 +14,17 @@ exports.GetProduct = async (req, res) => {
 };
 
 // GET SINGLE PRODUCT
-exports.GetOneProduct = async (req, res) => {
-  try {
-    const { idProduct } = req.params;
-    const response = await ProductModel.findById(idProduct);
-    console.log(idProduct)
-    res.status(200).send(response);
-  } catch (error) {
-    console.log(error);
-    res.status(400).send("hubo un error en la peticion get");
-  }
-};
+// exports.GetOneProduct = async (req, res) => {
+//   try {
+//     const { idProduct } = req.params;
+//     const response = await ProductModel.findById(idProduct);
+//     console.log(idProduct)
+//     res.status(200).send(response);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400).send("hubo un error en la peticion get");
+//   }
+// };
 
 //GET CART PRODUCT
 exports.GetCartProduct = async (req, res) => {
@@ -109,7 +109,6 @@ exports.PutRemoveProduct = async (req, res) => {
       { arrayProduct: newCart },
       { new: true }
     );
-    console.log(newCart);
     res.status(201).send(response);
   } catch (error) {
     console.log(error);
