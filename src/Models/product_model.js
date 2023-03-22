@@ -1,30 +1,5 @@
 const mongoose = require("mongoose");
 
-// const reviewSchema = mongoose.Schema(
-//   {
-//     name: {
-//       type: String,
-//       required: true,
-//     },
-//     rating: {
-//       type: Number,
-//       required: true,
-//     },
-//     comment: {
-//       type: String,
-//       required: true,
-//     },
-//     user: {
-//       type: mongoose.Schema.Types.ObjectId,
-//       required: true,
-//       ref: "UserModel",
-//     },
-//   },
-//   {
-//     timestamps: true,
-//   }
-// );
-
 const ProductModel = mongoose.Schema(
   {
     author:{
@@ -87,7 +62,6 @@ const ProductModel = mongoose.Schema(
       required: true,
       default: 1,
     },
-    // reviews: [reviewSchema],
     rating: {
       type: Number,
       required: true,
