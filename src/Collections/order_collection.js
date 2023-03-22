@@ -1,16 +1,6 @@
 const ProductModel = require("../Models/product_model");
 const UserModel = require("../Models/user_model");
 
-// //GET ALLS PRODUCT 
-// exports.GetProduct = async (req, res) => {
-  
-// };
-
-// //GET SINGLE PRODUCT 
-// exports.GetOneProduct = async (req, res) => {
-  
-// };
-
 exports.PostProduct = async (req, res) => {
   res.send("HOLA POST");
 };
@@ -27,7 +17,6 @@ exports.PutQuantity = async (req, res) => {
     let newCart = [];
     products.map((item, qty) => {
       if (item.toString() == idProduct) {
-        console.log(item)
         // newCart.push(item);
       }
     });
